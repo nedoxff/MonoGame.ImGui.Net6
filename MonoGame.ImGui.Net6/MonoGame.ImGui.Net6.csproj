@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Title>MonoGame.ImGui.Net6</Title>
+        <Authors>nedoxff, dovker, BinaryEyesDev</Authors>
+        <Description>The MonoGame.ImGui library ported to .NET6.</Description>
+        <PackageProjectUrl>https://github.com/nedoxff/MonoGame.ImGui.Net6</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/nedoxff/MonoGame.ImGui.Net6/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/nedoxff/MonoGame.ImGui</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <PackageTags>monogame imgui gui</PackageTags>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ImGui.NET" Version="1.87.3" />
+        <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
+    </ItemGroup>
+
+</Project>
