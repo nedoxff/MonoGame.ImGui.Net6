@@ -103,6 +103,7 @@ public class ImGuiRenderer
         GraphicsDevice.RasterizerState = _rasterizerState;
         GraphicsDevice.DepthStencilState = DepthStencilState.DepthRead;
         GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp; //ADD THIS LINE
+        // GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp; //ADD THIS LINE
 
 
         // Handle cases of screen coordinates != from framebuffer coordinates (e.g. retina displays)
@@ -169,6 +170,9 @@ public class ImGuiRenderer
 
 #pragma warning disable CS0618
 
+        if (drawCommand.ElemCount == 0)
+            return;
+        
         GraphicsDevice.DrawIndexedPrimitives(
             PrimitiveType.TriangleList, vertexOffset, 0,
             commandList.VtxBuffer.Size, indexOffset, (int)(drawCommand.ElemCount / 3));
