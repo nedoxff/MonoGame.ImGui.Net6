@@ -140,17 +140,16 @@ public class ImGuiRenderer
 
                 GraphicsDevice.ScissorRectangle = GenerateScissorRect(drawCommand);
                 var effect = UpdateEffect(_textureData.Loaded[drawCommand.TextureId]);
-
+                
                 foreach (var pass in effect.CurrentTechnique.Passes)
                 {
                     pass.Apply();
-                    DrawPrimitives(vertexOffset, indexOffset, commandList, drawCommand);
+                    DrawPrimitives(vertexOffset, indexOffset + (int)(drawCommand.IdxOffset), commandList, drawCommand);
                 }
-
-                indexOffset += (int)drawCommand.ElemCount;
             }
 
             vertexOffset += commandList.VtxBuffer.Size;
+            indexOffset += commandList.IdxBuffer.Size;
         }
     }
 
@@ -172,11 +171,9 @@ public class ImGuiRenderer
 
         if (drawCommand.ElemCount == 0)
             return;
-        
-        GraphicsDevice.DrawIndexedPrimitives(
-            PrimitiveType.TriangleList, vertexOffset, 0,
-            commandList.VtxBuffer.Size, indexOffset, (int)(drawCommand.ElemCount / 3));
 
+        GraphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, vertexOffset, indexOffset, (int)(drawCommand.ElemCount / 3));
+        
 
 #pragma warning restore CS0618
     }
