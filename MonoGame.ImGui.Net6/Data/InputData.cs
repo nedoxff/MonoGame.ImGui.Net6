@@ -43,6 +43,8 @@ public class InputData
         io.MouseDown[0] = mouse.LeftButton == ButtonState.Pressed;
         io.MouseDown[1] = mouse.RightButton == ButtonState.Pressed;
         io.MouseDown[2] = mouse.MiddleButton == ButtonState.Pressed;
+        io.MouseDown[3] = mouse.XButton1 == ButtonState.Pressed;
+        io.MouseDown[4] = mouse.XButton2 == ButtonState.Pressed;
 
         var scrollDelta = mouse.ScrollWheelValue - _scrollWheel;
         io.MouseWheel = scrollDelta > 0 ? 1 : scrollDelta < 0 ? -1 : 0;
